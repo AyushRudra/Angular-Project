@@ -1,0 +1,27 @@
+<filter
+  [all]="totelProductLength"
+  [inStock]="totelProcuctInStock"
+  [outStock]="totelProductOutOfStock"
+  (selectedFilerRadioButtonChanged)="onFilterChanged($event)"
+
+/>
+
+<div class="ekart--product--container">
+  <!-- send parent to child data -->
+
+  <!-- ng-Container like <> </> fragement react not take exctra html element in Dom
+
+  ng-template help to define a template that can be reused multiple times within an Angular component.
+  ng-container when we need to group elements without adding additional nodes to the DOM.
+  -->
+
+  <ng-container *ngFor="let prod of products">
+      <!-- *ngIf="
+        SelectedRadioButton === 'all' ||
+        prod.is_in_inventory.toString() === SelectedRadioButton" -->
+    <product
+      [product]="prod"
+      *ngIf=" searchText === '' || prod.name.toLowerCase().includes(searchText)"
+      (click)="selectedProduct = prod" ></product>
+  </ng-container>
+</div>

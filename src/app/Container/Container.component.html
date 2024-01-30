@@ -1,0 +1,55 @@
+<!-- <p>Name: {{Name}}</p> their used String interpolation
+  <p>price: ${{price}}</p>
+  <p>Color: {{color}}</p>
+  <p>Discounted Price: ${{DiscountedPrice}}</p> -->
+
+<!-- make object to access -->
+
+<!-- string interpolation used with show pieace of data in HTML
+  <img width="350px" height="350px" src={{product.pImage}} alt=""> s -->
+
+<!-- Property-Binding  used to bind data from ObjectDom-->
+
+<!-- <input bind-value="product.name" /> both are same
+<input [value]="product.name" /> -->
+
+<!-- we can bind only attribute not property so we used attr.property_name  for
+bind also property-->
+<!-- <input [value]="product.name" [attr.area-hidden] ="" /> -->
+
+<!--
+   string interpolation not work with every html Element then we can use PropertyBinding
+  <button disabled={{!(product.instock > 0)}}>Buy Now</button>
+-->
+
+<!-- Loop l
+      <div *ngFor="let iteam of listOfString">
+      <p>Current Element is: {{iteam}}</p>
+-->
+
+<div class="ekart--product--container">
+  <!-- <img width="350px" height="350px" [src]="product.pImage" alt="">
+    <p>Name: {{product.Name}}</p>
+    <p>price:{{'$'+product.price}}</p>
+    <p>Color: {{product.color}}</p>
+    <p>Discounted Price: ${{getDiscountedPrice().toFixed(2)}}</p>
+    <p>{{product.instock > 0 ? 'Only '+product.instock+' iteams left' : 'Not in Stock'}}</p> -->
+  <!-- <button [disabled]="!(product.instock > 0)">Buy Now</button> -->
+
+  <!-- event Binding -->
+  <!-- <button (click)="decreament()">-</button>
+    <span>{{addToCart}}</span>
+    <button (click)="increament()">+</button> -->
+
+  <search (SearchTextChanged)="setSearchText($event)"></search>
+
+  <!-- search ==> Container ==> Product-list Send data one to another component -->
+
+  <product-list [searchText]="searchText" #ProductListComponent />
+
+  <product-details
+    *ngIf="ProductListComponent.selectedProduct"
+    [productListComp]="ProductListComponent"
+  />
+
+</div>

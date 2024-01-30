@@ -1,0 +1,25 @@
+<div class="ekart--search--product">
+  <!-- this is one way property binding and event binding
+  <input class="ekart-search-product-input"  [value]="searchText" (input)="updateSearchText($event)" > -->
+
+  <!-- we can perform two way binding  property[] => event()=> [()] -->
+  <input
+    placeholder="Search Your Product for Buy!"
+    class="ekart-search-product-input"
+    #searchInputRefrence
+  />
+  <button
+    [ngStyle]="{ fontWeight: 600 }"
+    class="btn btn-search"
+    (click)="updateSearchText()"
+  >
+    Search
+  </button>
+</div>
+
+<div class="ekart-search-result-for">
+  <p>
+    <strong *ngIf="searchText != ''">Search result for:</strong>
+    {{ searchText }}
+  </p>
+</div>
